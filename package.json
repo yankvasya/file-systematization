@@ -1,0 +1,27 @@
+{
+  "name": "file-systematization",
+  "version": "1.0.0",
+  "description": "Есть **сложная** структура папок (обязательна вложенность папок) с файлами (**тип** файлов на ваш выбор - музыкальные, файлы изображений). \\\r Необходимо разобрать коллекцию, создав новую общую папку и расположив внутри все файлы по папкам в алфавитном порядке, т.е. все файлы начинающиеся на “a” должны быть в папке “A” и т.д.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yankvasya/file-systematization.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yankvasya/file-systematization/issues"
+  },
+  "homepage": "https://github.com/yankvasya/file-systematization#readme",
+  "devDependencies": {
+    "eslint": "^8.9.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0"
+  }
+}
