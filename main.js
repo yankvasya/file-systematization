@@ -91,11 +91,7 @@ const init = () => {
 init();
 
 process.on('beforeExit', () => {
-  if (remove) {
-    removeDir(from);
-  } else {
-    process.exit(0);
-  }
+  if (remove) removeDir(from);
 });
 
 process.on('exit', () => {
