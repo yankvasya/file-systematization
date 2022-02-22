@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sort": "node main.js --from files --to result --remove"
+    "sort": "node main.js --from files --to result"
   },
   "repository": {
     "type": "git",

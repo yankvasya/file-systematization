@@ -10,9 +10,10 @@ const startApp = () => {
 
 const absolutePath = (name) => path.join(__dirname, name);
 
-const createDir = (directory, callback) => {
-  fs.mkdir(directory, () => {
-    if (callback) callback();
+const createDir = (directory, file, saveTo) => {
+  fs.mkdir(directory, (error) => {
+    if (error) console.log(`Директория существует - ${directory}`);
+    if (file) readFile(file, saveTo);
   });
 };
 
@@ -21,9 +22,10 @@ const isExist = (file, callback, notCallback) => {
     if (!error) {
       if (callback) callback();
     } else {
-      console.log(`${'Dir'.red} ${file.bgRed} ${"isn't exist".red}`);
       if (notCallback) {
         notCallback();
+      } else {
+        console.log(`${'Dir'.red} ${file.bgRed} ${"isn't exist".red}`);
       }
     }
   });
@@ -48,6 +50,16 @@ const writeFile = (file, directory, encoding = 'base64') => {
   });
 };
 
+const readFile = (file, directory) => {
+  fs.readFile(file, 'base64', (imageError, imageData) => {
+    if (!imageError) {
+      writeFile(imageData, directory);
+    } else {
+      console.log(`Cannot read image - ${file.red}`.bgRed);
+    }
+  });
+};
+
 const replaceFiles = (startDir) => {
   fs.readdir(absolutePath(startDir), (error, data) => {
     if (!error) {
@@ -63,14 +75,7 @@ const replaceFiles = (startDir) => {
             const firstLetter = name[0].toUpperCase();
             const directory = path.join(to, firstLetter, name);
             // Создает директорию с названием первой буквы файлы
-            createDir(path.join(to, firstLetter));
-            fs.readFile(file, 'base64', (imageError, imageData) => {
-              if (!imageError) {
-                writeFile(imageData, directory);
-              } else {
-                console.log(`Cannot read image - ${file.red}`.bgRed);
-              }
-            });
+            createDir(path.join(to, firstLetter), file, directory);
           } else {
             console.log(`${name.red} is directory`.bgRed);
             replaceFiles(fileDir);
